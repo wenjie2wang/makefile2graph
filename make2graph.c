@@ -30,6 +30,8 @@ History:
    * Dec  2014: new output. Print the deepest independant targets 
    * Desc 2014: MacOS bug, changed options
 
+   For this forked version:
+   * Nov  2019: set rankdir = "LR" in dot graph
 */
 
 #include <stdio.h>
@@ -340,7 +342,7 @@ static void DumpGraphAsDot(GraphPtr g,FILE* out)
 	{
 	size_t i=0,j=0;
 	
-	fputs("digraph G {\n",out);
+        fputs("digraph G {\nrankdir=\"LR\";\n",out);
 
 
 	for(i=0; i< g->target_count; ++i)
