@@ -1,4 +1,4 @@
-prefix = /usr/local
+prefix = $(shell echo $$HOME)
 bindir = $(prefix)/bin
 sharedir = $(prefix)/share
 docdir = $(sharedir)/doc
@@ -22,10 +22,10 @@ clean:
 	rm -f $(bin_PROGRAMS)
 
 install:
-	install -d $(DESTDIR)$(bindir) $(DESTDIR)$(pkgdocdir) $(DESTDIR)$(man1dir)
-	install $(bin_PROGRAMS) $(bin_SCRIPTS) $(DESTDIR)$(bindir)
-	install $(pkgdoc_DATA) $(DESTDIR)$(pkgdocdir)
-	install $(man1_MANS) $(DESTDIR)$(man1dir)
+	install -d $(bindir) # $(pkgdocdir) $(man1dir)
+	install $(bin_PROGRAMS) $(bin_SCRIPTS) $(bindir)
+# install $(pkgdoc_DATA) $(pkgdocdir)
+# install $(man1_MANS) $(man1dir)
 
 test: all
 	$(MAKE) -Bnd | ./make2graph | dot
